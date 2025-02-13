@@ -28,8 +28,8 @@ const (
 	UnexpectedExecutionError int = 256
 
 	// Not Relevant
-	NotRelevant       	int = 104
-	InsufficientPrivileges 	int = 109
+	NotRelevant            int = 104
+	InsufficientPrivileges int = 109
 
 	// Protected
 	TestCompletedNormally       int = 100
@@ -304,8 +304,8 @@ func Start(test fn, clean ...fn) {
 	}()
 
 	select {
-	case <-time.After(60 * time.Second):
-		Say("Test timed out after 60 seconds")
+	case <-time.After(180 * time.Second):
+		Say("Test timed out after 180 seconds")
 		Stop(TimeoutExceeded)
 	}
 }
@@ -382,8 +382,8 @@ func Unzip(zipData []byte) error {
 // NB: time.Duration is an int64 cast
 func Wait(dur time.Duration) {
 	if dur <= 0 { // default
-		Say("Waiting for 6 seconds")
-		time.Sleep(6 * time.Second)
+		Say("Waiting for 30 seconds")
+		time.Sleep(30 * time.Second)
 	} else {
 		Say(fmt.Sprintf("Waiting for %d seconds", dur))
 		time.Sleep(dur * time.Second)
